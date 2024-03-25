@@ -1,0 +1,25 @@
+@import 'reset';
+@import 'fonts';
+
+.title {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    translate: -50%;
+}
+
+.btn {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50%;
+    padding: 30px 50px;
+    &_last {
+        position: fixed;
+        top: 70%;
+        left: 50%;
+        translate: -50%;
+        padding: 15px 25px;
+    }
+}
+
