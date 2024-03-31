@@ -4,20 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.min.css">
-    <title>JS Homework</title>
+    <title>JS Homework Conditions & Cycles</title>
 </head>
 <body>
     <div class="page">
         <header class="head">
-
+            <h1 class="title">JS Homework Conditions & Cycles</h1>
         </header>
         <main class="main">
-            <h1 class="title">Пообщаемся?</h1>
-            <button class="btn">С удовольствием!</button>
-            <button class="btn_last">Проверить последнее задание</button>
+            <h2 class="title">Основные задачи</h2>
+            <section class="block">         
+                <form class="form" action="#">
+                    <h3 class="title">Задача 1 - Возраст</h3>
+                    <label class="label">Введите Ваш возраст<input type="number" id="userAge" placeholder="Например, 25"></label>
+                    <button class="btn btn_age">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 2 - Спецсимвол</h3>
+                    <label class="label">Введите любое число от 0 до 9<input type="number" id="spec" placeholder="Например, 4 или 7"></label>
+                    <button class="btn btn_spec">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 3 - Одинаковые цифры</h3>
+                    <label class="label">Введите любое трехзначное число<input type="number" id="reNum" placeholder="Например, 123"></label>
+                    <button class="btn btn_num">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 4 - Високосный год</h3>
+                    <label class="label">Введите год<input type="number" id="leapYear" placeholder="Например, 1980"></label>
+                    <button class="btn btn_year">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 5 - Палиндром</h3>
+                    <label class="label">Введите пятизначное число<input type="number" id="palindrom" placeholder="Например, 45634"></label>
+                    <button class="btn btn_pali">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 6 - Конвертер валют</h3>
+                    <label class="label">Введите число долларов<input type="number" id="enterUsd" placeholder="Например, $100"></label>
+                    <label class="label">Выберите валюту конвертации<input type="text" list="change" id="convert" placeholder="Например, EUR">
+                        <datalist id="change">
+                            <option value="EUR">
+                            <option value="UAN">
+                            <option value="AZN">
+                        </datalist>
+                    </label>
+                    <button class="btn btn_convert">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 7 - Скидка</h3>
+                    <label class="label">Введите сумму покупки<input type="number" id="purchaseSum" placeholder="Например, 1500 руб"></label>
+                    <button class="btn btn_sale">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 8 - Викторина</h3>
+                    <button class="btn btn_play">Играем</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 9 - Положительное или нет</h3>
+                    <label class="label">Введите любое число<input type="number" id="digit" placeholder="Например, 33"></label>
+                    <button class="btn btn_digit">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 10 - Возраст в диапазоне</h3>
+                    <label class="label">Введите Ваш возраст<input type="number" id="yourAge" placeholder="Например, 50"></label>
+                    <button class="btn btn_your-age">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 11 - Модуль числа</h3>
+                    <label class="label">Введите любое число<input type="number" id="modul" placeholder="Например, 2"></label>
+                    <button class="btn btn_modul">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 12 - Правильность ввода времени</h3>
+                    <label class="label">Введите текущее время в формате часы:минуты:секунды<input type="text" pattern="[0-9:]*" id="time" placeholder="Например, 15:46:17"></label>
+                    <button class="btn btn_time">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 13 - Номер четверти</h3>
+                    <label class="label">Введите координаты x<input type="number" id="coordinateX" placeholder="Например, -10"></label>
+                    <label class="label">Введите координаты y<input type="number" id="coordinateY" placeholder="Например, 12"></label>
+                    <button class="btn btn_coordinates">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 14 - Номер месяца</h3>
+                    <label class="label">Введите номер месяца<input type="number" id="month" placeholder="Например, 9"></label>
+                    <button class="btn btn_month">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 15 - Калькулятор</h3>
+                    <label class="label">Введите первое число<input type="number" id="oneDigit" placeholder="Например, 4"></label>
+                    <label class="label">Выберите действие<input type="text" list="action" id="digitAction" placeholder="*, /, +, -">
+                        <datalist id="action">
+                            <option value="+">
+                            <option value="-">
+                            <option value="*">
+                            <option value="/">
+                        </datalist>
+                    </label>
+                    <label class="label">Введите второе число<input type="number" id="twoDigit" placeholder="Например, 4"></label>
+                    <button class="btn btn_calculate">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 16 - Большее из чисел</h3>
+                    <label class="label">Введите первое число<input type="number" id="oneFigure" placeholder="Например, 15"></label>
+                    <label class="label">Введите второе число<input type="number" id="twoFigure" placeholder="Например, 56"></label>
+                    <button class="btn btn_compare">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 17 - Число кратно 5</h3>
+                    <label class="label">Введите любое число<input type="number" id="figure" placeholder="Например, 45"></label>
+                    <button class="btn btn_figure">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 18 - Привет землянин</h3>
+                    <label class="label">Вы с какой планеты?<input type="text" id="planet" placeholder="Например, марс"></label>
+                    <button class="btn btn_planet">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 19 - Не входит в диапазон</h3>
+                    <label class="label">Введите Ваш возраст<input type="number" id="personAge" placeholder="Например, 18"></label>
+                    <button class="btn btn_personAge">Результат</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 20 - Авторизация</h3>
+                    <button class="btn btn_logIn">Залогиниться</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 21 - Переделать if</h3>
+                    <button class="btn btn_check21">Проверить</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 22 - Переделать if….else</h3>
+                    <button class="btn btn_check22">Проверить</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Задача 23 - Сравнение переменных</h3>
+                    <button class="btn btn_check23">Проверить</button>
+                    <p class="text">Ответ в консоле</p>
+                </form>
+            </section>
+            <h2 class="title">Дополнительные задачи</h2>
+            <section class="block">
+                <form class="form" action="#">
+                    <h3 class="title">Доп Задача 1</h3>
+                    <button class="btn btn_checkTask1">Проверить</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Доп Задача 2</h3>
+                    <button class="btn btn_checkTask2">Проверить</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Доп Задача 3</h3>
+                    <button class="btn btn_checkTask3">Проверить</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Доп Задача 4</h3>
+                    <button class="btn btn_checkTask4">Проверить</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Доп Задача 5</h3>
+                    <button class="btn btn_checkTask5">Проверить</button>
+                </form>
+                <form class="form" action="#">
+                    <h3 class="title">Доп Задача 6</h3>
+                    <button class="btn btn_checkTask6">Проверить</button>
+                </form>
+            </section>
         </main>
         <footer class="foot">
-            
+
         </footer>
     </div>
     <script src="./js/script.js"></script>
