@@ -33,7 +33,9 @@ const btn_age = document.querySelector('.btn_age'),
 //забираю данные из формы по клику (каюсь нагуглил)
 btn_age.addEventListener('click',() => {
     let userAge = document.querySelector("#userAge").value;
-    if (userAge <= 12) {
+    if (userAge <= 0) {
+        alert('Да не может быть!')
+    } else if (userAge > 0 && userAge <= 12) {
         alert('Да Вы ещё ребенок')
     } else if (userAge > 12 && userAge <= 17) {
         alert('Вы подросток')
@@ -87,7 +89,7 @@ btn_spec.addEventListener('click',() => {
 //Задача 3 - Одинаковые цифры
 btn_num.addEventListener('click',() => {
     let reNum = document.querySelector("#reNum").value, x;
-        while (reNum.length != 3) {
+        while (reNum.length != 3 || reNum <= 0) {
             reNum = prompt('Введите любое, но именно трехзначное число', 'Например, 123')
         };
     for (let i = 0; i < reNum.length; i++) {
@@ -112,7 +114,7 @@ btn_year.addEventListener('click',() => {
 btn_pali.addEventListener('click',() => {
     let palindrom = document.querySelector("#palindrom").value, 
         mordnilap = '';
-        while (palindrom.length != 5) {
+        while (palindrom.length != 5 || palindrom < 0) {
             palindrom = prompt('Пятизначное - значит 5 цифр', 'Например, 12321')
         };
     for (let i = palindrom.length - 1; i >= 0; i--) {
@@ -136,13 +138,13 @@ btn_convert.addEventListener('click',() => {
         };
         if (changeConvert === 'EUR') {
             convertResult = eurUsd * enterUsd
-            alert(`На сегодняшний день за ${enterUsd}$ дают ${convertResult} евро`)
+            alert(`На сегодняшний день за ${enterUsd}$ дают ${convertResult.toFixed(2)} евро`)
         } else if (changeConvert === 'UAN') {
             convertResult = uanUsd * enterUsd;
-            alert(`На сегодняшний день за ${enterUsd}$ дают ${convertResult} юаней`)
+            alert(`На сегодняшний день за ${enterUsd}$ дают ${convertResult.toFixed(2)} юаней`)
         } else if (changeConvert === 'AZN') {
             convertResult = aznUsd * enterUsd;
-            alert(`На сегодняшний день за ${enterUsd}$ дают ${convertResult} Азербайджанских манат`)
+            alert(`На сегодняшний день за ${enterUsd}$ дают ${convertResult.toFixed(2)} Азербайджанских манат`)
         }
 })
 
@@ -252,11 +254,11 @@ btn_time.addEventListener('click',() => {
             } 
         } while (checkTime !== 'ok')
         checkTime = '';
-        if (hour < 0 || hour > 24) {
+        if (hour < 0 || hour >= 23) {
             time = prompt('Часы не могут буть меньше нуля или больше 24, пожалуйста, введите время в указанном формате', 'Например, 16:56:28') 
-        } else if (minute < 0 || minute > 60) {
+        } else if (minute < 0 || minute >= 59) {
             time = prompt('Минуты не могут буть меньше нуля или больше 60, пожалуйста, введите время в указанном формате', 'Например, 16:56:28')            
-        } else if (second < 0 || second > 60) {
+        } else if (second < 0 || second >= 59) {
             time = prompt('Секунды не могут буть меньше нуля или больше 60, пожалуйста, введите время в указанном формате', 'Например, 16:56:28')
         } else {
             checkTime = 'ok';
