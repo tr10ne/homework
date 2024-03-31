@@ -1,3 +1,3 @@
 # homework
-Repository for uploading homework assignments<br>
-Репозиторий для загрузки домашних заданий
+Репозиторий для загрузки домашних заданий<br>
+Repository for uploading homework assignments
