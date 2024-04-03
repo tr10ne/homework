@@ -1,580 +1,501 @@
-//как и прошлый раз создаю константы для кнопок
-const btn_age = document.querySelector('.btn_age'),
-    btn_spec = document.querySelector('.btn_spec'),
-    btn_num = document.querySelector('.btn_num'),
-    btn_year = document.querySelector('.btn_year'),
-    btn_pali = document.querySelector('.btn_pali'),
-    btn_convert = document.querySelector('.btn_convert'),
-    btn_sale = document.querySelector('.btn_sale'),
-    btn_play = document.querySelector('.btn_play'),
-    btn_digit = document.querySelector('.btn_digit'),
-    btn_yourAge = document.querySelector('.btn_your-age'),
-    btn_modul = document.querySelector('.btn_modul'),
-    btn_time = document.querySelector('.btn_time'),
-    btn_coordinates = document.querySelector('.btn_coordinates'),
-    btn_month = document.querySelector('.btn_month'),
-    btn_calculate = document.querySelector('.btn_calculate'),
-    btn_compare = document.querySelector('.btn_compare'),
-    btn_figure = document.querySelector('.btn_figure'),
-    btn_planet = document.querySelector('.btn_planet'),
-    btn_personAge = document.querySelector('.btn_personAge'),
-    btn_logIn = document.querySelector('.btn_logIn'),
-    btn_check21 = document.querySelector('.btn_check21'),
-    btn_check22 = document.querySelector('.btn_check22'),
-    btn_check23 = document.querySelector('.btn_check23'),
-    btn_checkTask1 = document.querySelector('.btn_checkTask1'),
-    btn_checkTask2 = document.querySelector('.btn_checkTask2'),
-    btn_checkTask3 = document.querySelector('.btn_checkTask3'),
-    btn_checkTask4 = document.querySelector('.btn_checkTask4'),
-    btn_checkTask5 = document.querySelector('.btn_checkTask5'),
-    btn_checkTask6 = document.querySelector('.btn_checkTask6');
+const btn = document.querySelector('.btn');
 
-//Задача 1 - Возраст
-//забираю данные из формы по клику (каюсь нагуглил)
-btn_age.addEventListener('click',() => {
-    let userAge = document.querySelector("#userAge").value;
-    if (userAge <= 0) {
-        alert('Да не может быть!')
-    } else if (userAge > 0 && userAge <= 12) {
-        alert('Да Вы ещё ребенок')
-    } else if (userAge > 12 && userAge <= 17) {
-        alert('Вы подросток')
-    } else if (userAge > 17 && userAge <= 60) {
-        alert('Поздравляю, Вы взрослый человек')
-    } else if (userAge > 60) {
-        alert('Сожалею, Вам не долго осталось, Вы - пенсионер')
-    }
-})
-//Далее аналогично
+btn.addEventListener('click',() => {
+//Объявляю переменные
+    let task, question;
 
-//Задача 2 - Спецсимволы
-btn_spec.addEventListener('click',() => {
-    let spec = +document.querySelector("#spec").value;
-    switch (spec) {
-        case 1:
-            alert('под этой цифрой на Вашей клавиатуре есть знак "!"')
-            break
-        case 2:
-            alert('под этой цифрой на Вашей клавиатуре есть знак "@"')
-            break
-        case 3:
-            alert('под этой цифрой на Вашей клавиатуре есть знак "#"')
-            break
-        case 4:
-            alert('под этой цифрой на Вашей клавиатуре есть знак "$"')
-            break
-        case 5:
-            alert('под этой цифрой на Вашей клавиатуре есть знак "%"')
-            break
-        case 6:
-            alert('под этой цифрой на Вашей клавиатуре есть знак "^"')
-            break
-        case 7:
-            alert('под этой цифрой на Вашей клавиатуре есть знак "&"')
-            break
-        case 8:
-            alert('под этой цифрой на Вашей клавиатуре есть знак "*"')
-            break
-        case 9:
-            alert('под этой цифрой на Вашей клавиатуре есть знак "("')
-            break
-        case 0:
-            alert('под этой цифрой на Вашей клавиатуре есть знак ")"')
-            break
-        default:
-            alert('введите число от 0 до 9')
-    }
-})
-
-//Задача 3 - Одинаковые цифры
-btn_num.addEventListener('click',() => {
-    let reNum = document.querySelector("#reNum").value, x;
-        while (reNum.length != 3 || reNum <= 0) {
-            reNum = prompt('Введите любое, но именно трехзначное число', 'Например, 123')
-        };
-    for (let i = 0; i < reNum.length; i++) {
-        if (reNum[i] === reNum[i + 1]) {
-            x = reNum[i]
-        }
-    };
-    if (x === undefined) {
-        alert(`В Вашем числе все цифры уникальны, ${reNum}`)
-    } else {
-        alert(`В Вашем числе повторяется цифра ${x}`)
-    }
-})
-
-//Задача 4 - Високосный год
-btn_year.addEventListener('click',() => {
-    let leapYear = document.querySelector("#leapYear").value;
-        (leapYear % 400 === 0) || (leapYear % 4 === 0 && leapYear % 100 !== 0) ? alert(`${leapYear} - это високосный год, напряглись!`) : alert(`${leapYear} - это обычный год, всё в порядке, можно расслабиться`);
-})
-
-//Задача 5 - Палиндром
-btn_pali.addEventListener('click',() => {
-    let palindrom = document.querySelector("#palindrom").value, 
-        mordnilap = '';
-        while (palindrom.length != 5 || palindrom < 0) {
-            palindrom = prompt('Пятизначное - значит 5 цифр', 'Например, 12321')
-        };
-    for (let i = palindrom.length - 1; i >= 0; i--) {
-        mordnilap += palindrom[i]
-        };
-    if (mordnilap === palindrom) {
-        alert(`Ваше число ${palindrom} является палиндромом`)
-    } else {
-        alert(`Число ${palindrom} палиндромом не является`)
-    }
-})
-
-//Задача 6 - Конвертер валют
-btn_convert.addEventListener('click',() => {
-    let enterUsd = document.querySelector("#enterUsd").value,
-        changeConvert = document.querySelector("#convert").value,
-        convertResult;
-    const eurUsd = 1.5, uanUsd = 2, aznUsd = 2.5;
-        while (enterUsd <= 0) {
-            enterUsd = prompt('Сумма долларов такой быть не может, введите корректную сумму строго больше 0', 'Например, $100')
-        };
-        if (changeConvert === 'EUR') {
-            convertResult = eurUsd * enterUsd
-            alert(`На сегодняшний день за ${enterUsd}$ дают ${convertResult.toFixed(2)} евро`)
-        } else if (changeConvert === 'UAN') {
-            convertResult = uanUsd * enterUsd;
-            alert(`На сегодняшний день за ${enterUsd}$ дают ${convertResult.toFixed(2)} юаней`)
-        } else if (changeConvert === 'AZN') {
-            convertResult = aznUsd * enterUsd;
-            alert(`На сегодняшний день за ${enterUsd}$ дают ${convertResult.toFixed(2)} Азербайджанских манат`)
-        }
-})
-
-//Задача 7 - Скидка
-btn_sale.addEventListener('click',() => {
-    let purchaseSum = document.querySelector("#purchaseSum").value, finalPrice;
-        while (purchaseSum <= 0) {
-            purchaseSum = prompt('Сумма долларов такой быть не может, введите корректную сумму строго больше 0', 'Например, 2000')
-        };
-        if (purchaseSum > 200 && purchaseSum <= 300) {
-            finalPrice = purchaseSum - purchaseSum * 0.03;
-            alert(`Сумма к оплате ${finalPrice} рублей`)
-        } else if (purchaseSum > 300 && purchaseSum <= 500) {
-            finalPrice = purchaseSum - purchaseSum * 0.05;
-            alert(`Сумма к оплате ${finalPrice} рублей`)
-        } else if (purchaseSum > 500) {
-            finalPrice = purchaseSum - purchaseSum * 0.07;
-            alert(`Сумма к оплате ${finalPrice} рублей`)
-        } else {
-            alert(`Сумма к оплате ${purchaseSum} рублей`)
-        }
-})
-
-//Задача 8 - Викторина
-btn_play.addEventListener('click',() => {
-    let firstQuestion = prompt(`Начнем тест по географии! Итак, столица Ирландии?`, 'Введите ответ с большой буквы'),
-        secondQuestion = prompt(`Принято, следующий вопрос. Столица Австралии?`, 'Введите ответ с большой буквы'),
-        thirdQuestion = prompt(`Принято, и последний самый сложный вопрос. Столица Новой Зеландии?`, 'Введите ответ с большой буквы'),
-        firstAnswer = 'Дублин',
-        secondAnswer = 'Канберра',
-        thirdAnswer = 'Веллингтон',
-        score = 0;
-        if (firstQuestion === firstAnswer) {
-            score += 2;
-        } else {
-            score +=1;
-        }
-        if (secondQuestion === secondAnswer) {
-            score += 2;
-        } else {
-            score +=1;
-        }
-        if (thirdQuestion === thirdAnswer) {
-            score += 2;
-        } else {
-            score +=1;
-        }
-        alert(`Поздравляю! Вы набрали ${score} из 6 баллов`)
-})
-
-//Задача 9 - Положительное или нет
-btn_digit.addEventListener('click',() => {
-    let digit = document.querySelector("#digit").value;
-    if (digit > 0) {
-        alert(`Ваше число ${digit} - положительное`)
-    } else if (digit < 0) {
-        alert(`Ваше число ${digit} - отрицательное`)
-    } else if (digit === '') {
-        alert(`Похоже Вы ничего не ввели попробуйте ещё раз`) 
-    } else {
-        alert(`Ваше число - НОЛЬ!`)
-    }
-})
-
-//Задача 10 - Возраст в диапазоне
-btn_yourAge.addEventListener('click',() => {
-    let yourAge = document.querySelector("#yourAge").value;
-    if (yourAge > 0 && yourAge <= 4) {
-        alert(`Сомнительно, что Вы смогли добраться до клавиатуры, но допустим я верю, что ${yourAge} год(а) действительно Ваш возраст`)
-    } else if (yourAge > 5 && yourAge < 120) {
-        alert(`Похоже Вы не обманываете и ${yourAge} лет действительно Ваш возраст`)
-    }
-    else {
-        alert(`Зачем обманываете? Не хорошо!`)
-    }
-})
-
-//Задача 11 - Модуль числа
-btn_modul.addEventListener('click',() => {
-    let modul = document.querySelector("#modul").value;
-    alert(`Модуль этого числа = ${Math.abs(modul)}`)
-})
-
-//Задача 12 - Правильность ввода времени
-btn_time.addEventListener('click',() => {
-    let time = document.querySelector("#time").value,
-    searchTime,
-    partTime, 
-    hour, second, minute,
-    checkTime;
+//Цикл для выбора задания
     do {
-        do {
-            searchTime = time.indexOf(':');
-            if (searchTime === -1 || searchTime === 0) {
-                time = prompt('Введите время в указанном формате', 'Например, 16:56:28') 
+        task = prompt('Введите номер задания, которое хотите проверить', 'от 1 до 29');
+    } while (isNaN(task) || (task < 1 || task > 29) && task !== null);
+
+//Условие для того чтобы, если цикл прекратится отменой, код ниже не выполнялся
+    if (!isNaN(task) && (task >= 1 && task <= 29) && task !== null) {
+        
+    //Создаю вспомогательную функцию чтобы не дублировать одинаковые куски кода
+        function myQuestion() {
+            question = prompt(`Чтобы закончить введите любой символ или нажмите "Отмена"\n ------------------------------------------------------\n Чтобы проверить следующее задание нажмите "Продолжить"`);
+            if (question !== '' || question === null) {
+            
+            //этот момент загуглил
+                throw new Error('До свидания!')
             } else {
-                hour = time.slice(0, searchTime);
-                partTime = time.slice(searchTime + 1);
-                searchTime = partTime.indexOf(':');
-                if (searchTime === -1 || searchTime === 0) {
-                    time = prompt('Введите время в указанном формате', 'Например, 16:56:28')
-                } else {
-                    checkTime = 'ok';
-                    minute = partTime.slice(0, searchTime);
-                    second = partTime.slice(searchTime + 1);
+            }
+        }
+
+    //ЗАДАЧА 1 - Объявление и вызов функции
+        function myName() {
+            alert(`Решение Задачи #1:\n\nJohn Trivon`)    
+        }
+    
+    //ЗАДАЧА 2 - Присваивание функции переменной
+        let yourName = nName => `Привет, ${nName}`;
+        console.log(yourName('John'));
+        console.log(yourName('Trivon'));
+
+    //ЗАДАЧА 3 - Стрелочная функция
+        let helloWorldObviously = () => {
+            return `Привет, мир!`
+        }
+        console.log(helloWorldObviously());
+        let helloWorldImplicitly = () => `Привет, мир!`;
+        console.log(helloWorldImplicitly());
+    
+    //ЗАДАЧА 4 - Функция «разница чисел»
+        function diffNum(x, y) {
+            let diffResult = x - y
+            alert(`Решение задачи #4:\n\nТип параметров: ${typeof x} и ${typeof y}\nТип возвращаемого значения: ${typeof diffResult}\nВозвращаемое значение: ${diffResult}`)
+            return diffResult
+        }
+
+    //ЗАДАЧА 5 - Колбэк функция
+        let helloWorld = () => console.log(`Привет, мир!`);
+        setTimeout(helloWorld, 5000);
+
+    //ЗАДАЧА 6 - Параметры функции по умолчанию
+        function weatherForecast(city, weather = 'Отличная погода!') {
+            alert(`Решение задачи #6:\n\n${city}, ${weather}`)
+        }
+
+    //ЗАДАЧА 7 - Сумма чисел
+        function sumNumbers(...numbers) {
+            let total = 0;
+            for (let number of numbers) {
+                total += number;
+            }
+            console.log('Сумма чисел:', total);
+            return total;
+        }
+
+    //ЗАДАЧА 8 - Проверка наличия аргументов в вызове функции
+        function sumNumbersMod(...numbers) {
+            if (numbers.length === 0) {
+                console.log('Функция "sumNumbers" не может быть вызвана без аргумента');
+            }
+            let total = 0;
+            for (let number of numbers) {
+                total += number;
+            }
+            console.log('Сумма чисел:', total);
+            return total;
+        }
+
+    //ЗАДАЧА 9 - Шаблонные строки
+        let templateLiteral = num => {
+            if (num < 19) {
+                alert(`Решение Задачи #9:\n\nЧисло: ${num}\nЭто число меньше или равно 19\nКвадратный корень этого числа ${Math.sqrt(num)}`)
+            } else {
+                alert(`Решение Задачи #9:\n\nЧисло: ${num}\nЭто число больше или равно 19\nКвадратный корень этого числа ${Math.sqrt(num)}`)
+            }
+        }
+
+    //ЗАДАЧА 10 - Зона видимости функции
+        const b = 2
+        let d = 15
+        function myFn1(a) {
+        let b
+        let d = 10
+        myFn2(b)
+        }
+        function myFn2(a) {
+        let c = 5
+        console.log(a, b, c, d)
+        }
+        myFn1()   
+        
+    //ЗАДАЧА 11 - Тернарный оператор
+        let isNumber = a => {return typeof a === 'number' ? `${a} - это число` : `${a} - это не число`}
+        console.log(isNumber(10))  // 10 - это число
+        console.log(isNumber('Привет'))  // Привет - это не число
+        console.log(isNumber(true))  // true - это не число
+    
+    //ЗАДАЧА 12 - Стрелочные функции
+        let mult = (a, b) => a * b
+        setTimeout(() => {
+            console.log(mult(5, 10));
+        }, 1000)// 50
+    
+    //ЗАДАЧА 13 - Параметры функции по умолчанию
+        function multiplyBy(a, mult = 2) {
+            console.log(a * mult);
+        }
+        multiplyBy(2)  // 4
+        multiplyBy(2, undefined)  // 4
+        multiplyBy(2, 0)  // 0
+        multiplyBy(5, 10)  // 50
+
+    //ЗАДАЧА 14 - Шаблонные строки
+        const cars = {
+            car1: { brand: 'Honda', price: 13000 },
+            car2: { brand: 'Rolls-Royce', price: 120000 }
+        }
+        function carsInfo(cars) {
+            let carsInfoResult = '';
+            for (let i in cars) {
+                let cost = cars[i].price <= 20000 ? 'дешевая' : 'дорогая';
+                carsInfoResult = carsInfoResult + `Цена автомобиля ${cars[i].brand} - ${cars[i].price}$ и это ${cost} машина\n `;
+            }
+            return carsInfoResult;
+        }
+
+    //ЗАДАЧА 15 - Перебор свойств объекта
+        const objectWithNumbers = {
+            a: 10,
+            b: 20,
+            c: 'string',
+            d: 12,
+        }
+        let sumObjectValuesResult = 0;
+        function sumObjectValues(objectWithNumbers) {
+            for (let i in objectWithNumbers) {
+                if (typeof objectWithNumbers[i] === 'number') {
+                    sumObjectValuesResult += objectWithNumbers[i]
                 }
-            } 
-        } while (checkTime !== 'ok')
-        checkTime = '';
-        if (hour < 0 || hour >= 23) {
-            time = prompt('Часы не могут буть меньше нуля или больше 24, пожалуйста, введите время в указанном формате', 'Например, 16:56:28') 
-        } else if (minute < 0 || minute >= 59) {
-            time = prompt('Минуты не могут буть меньше нуля или больше 60, пожалуйста, введите время в указанном формате', 'Например, 16:56:28')            
-        } else if (second < 0 || second >= 59) {
-            time = prompt('Секунды не могут буть меньше нуля или больше 60, пожалуйста, введите время в указанном формате', 'Например, 16:56:28')
-        } else {
-            checkTime = 'ok';
-            alert(`Московское время ${hour} час(а/ов) ${minute} минут(а/ы) и ${second} секунд(а/ы)`)
+            }
+            return sumObjectValuesResult;
         }
-    } while (checkTime !== 'ok')
-})
 
-//Задача 13 - Номер четверти
-btn_coordinates.addEventListener('click',() => {
-    let coordinateX = document.querySelector("#coordinateX").value;
-    let coordinateY = document.querySelector("#coordinateY").value;
-    let сoordinates;
-    if (coordinateX == 0 && coordinateY == 0) {
-        сoordinates = 'centr'
-    } else if (coordinateX == 0 && coordinateY > 0) {
-        сoordinates = 'bottom'
-    } else if (coordinateX == 0 && coordinateY < 0) {
-        сoordinates = 'top'
-    } else if (coordinateX > 0 && coordinateY == 0) {
-        сoordinates = 'right'
-    } else if (coordinateX < 0 && coordinateY == 0) {
-        сoordinates = 'left'
-    } else if (coordinateX > 0 && coordinateY > 0) {
-        сoordinates = 'top right'
-    } else if (coordinateX > 0 && coordinateY < 0) {
-        сoordinates = 'bottom right'
-    } else if (coordinateX < 0 && coordinateY < 0) {
-        сoordinates = 'bottom left'
-    } else if (coordinateX < 0 && coordinateY > 0) {
-        сoordinates = 'top left'
-    }
-    switch (сoordinates) {
-        case 'centr':
-            alert('Бинго! Вы попали в центр координат.')
-            break
-        case 'top':
-            alert('Точка находится в верхней половине кооридинат')
-            break
-        case 'bottom':
-            alert('Точка находится в нижней половине кооридинат')
-            break
-        case 'right':
-            alert('Точка находится в правой половине кооридинат')
-            break
-        case 'left':
-            alert('Точка находится в левой половине кооридинат')
-            break
-        case 'top right':
-            alert('Точка находится в верхней правой четверти кооридинат, 0-ая четверть')
-            break
-        case 'bottom right':
-            alert('Точка находится в нижней правой четверти кооридинат, 1-ая четверть')
-            break
-        case 'bottom left':
-            alert('Точка находится в нижней левой четверти кооридинат, 2-ая четверть')
-            break
-        case 'top left':
-            alert('Точка находится в верхней левой четверти кооридинат, -1-ая четверть')
-            break
-        default:
-            alert('Кажется Вы не правильно ввели данные, попробуйте ещё раз')
-    }
-})
-
-//Задача 14 - Номер месяца
-btn_month.addEventListener('click',() => {
-    let month = document.querySelector("#month").value;
-    switch (+month) {
-        case 1:
-            alert('Месяц Январь')
-            break
-        case 2:
-            alert('Месяц Февраль')
-            break
-        case 3:
-            alert('Месяц Март')
-            break
-        case 4:
-            alert('Месяц Апрель')
-            break
-        case 5:
-            alert('Месяц Май')
-            break
-        case 6:
-            alert('Месяц Июнь')
-            break
-        case 7:
-            alert('Месяц Июль')
-            break
-        case 8:
-            alert('Месяц Август')
-            break
-        case 9:
-            alert('Месяц Сентябрь')
-            break
-        case 10:
-            alert('Месяц Октябрь')
-            break
-        case 11:
-            alert('Месяц Ноябрь')
-            break
-        case 12:
-            alert('Месяц Декабрь')
-            break   
-        default:
-            alert('Номер месяца введен некорректно, введите число от 1 до 12')
-    }
-})
-
-//Задача 15 - Калькулятор
-btn_calculate.addEventListener('click',() => {
-    let oneDigit = document.querySelector("#oneDigit").value,
-        digitAction = document.querySelector("#digitAction").value,
-        twoDigit = document.querySelector("#twoDigit").value,
-        calculate;
-    if (digitAction === '+') {
-        alert(`${oneDigit} + ${twoDigit} = ${calculate = +oneDigit + +twoDigit}`)
-    } else if (digitAction === '-') {
-        alert(`${oneDigit} - ${twoDigit} = ${calculate = +oneDigit - +twoDigit}`)
-    } else if (digitAction === '*') {
-        alert(`${oneDigit} * ${twoDigit} = ${calculate = +oneDigit * +twoDigit}`)
-    } else if (digitAction === '/') {
-        alert(`${oneDigit} / ${twoDigit} = ${calculate = +oneDigit / +twoDigit}`)
-    }
-})
-
-//Задача 16 - Большее из числе
-btn_compare.addEventListener('click',() => {
-    let oneFigure = document.querySelector("#oneFigure").value,
-        twoFigure = document.querySelector("#twoFigure").value;
-    if (+oneFigure == +twoFigure) {
-        alert(`Числа равны`) 
-    } else {
-        +oneFigure > +twoFigure ? alert(`${oneFigure} большее число`) : alert(`${twoFigure} большее число`)
-    }
-})
-
-//Задача 17 - Число кратно 5
-btn_figure.addEventListener('click',() => {
-    let figure = document.querySelector("#figure").value;
-    if (+figure === 0) {
-        alert(`Число ${figure} это ноль`) 
-    } else if (+figure % 5 === 0) {
-        alert(`Число ${figure} кратно 5`)
-    } else {
-        alert(`Число ${figure} НЕ кратно 5`) 
-    }
-})
-
-//Задача 18 - Привет землянин
-btn_planet.addEventListener('click',() => {
-    let planet = document.querySelector("#planet").value;
-    if (planet === "Земля" || planet === "земля") {
-        alert(`Привет, землянин!`)
-    } else {
-        alert(`Привет, инопланетянин!`)
-    }
-})
-
-//Задача 19 - Не входит в диапазон
-btn_personAge.addEventListener('click',() => {
-    let personAge = document.querySelector("#personAge").value;
-    if (personAge <= 0) {
-        alert(`Возраст не может быть отрицательным или нулевым`)
-    } else if (personAge >= 14 && personAge <= 90) {
-        alert(`Возраст ${personAge} входит в диапазон от 14 до 90`)
-    } else {
-        alert(`Возраст ${personAge} в диапазон от 14 до 90 НЕ входит`)
-    }
-})
-
-//Задача 20 - Авторизация
-btn_logIn.addEventListener('click',() => {
-    let logIn = prompt('Введите логин'),
-        password;
-    if (logIn == null) {
-        alert(`Отменено`)
-    } else if (logIn !== 'Админ') {
-        alert(`Я Вас не знаю!`)
-    } else {
-        password = prompt('Введите пароль')
-        if (password == null) {
-            alert(`Отменено`)
-        } else if (password === 'Я главный') {
-            alert(`Здравствуйте!`)
-        } else {
-            alert(`Неверный пароль!`)
+    //ЗАДАЧА 16 – Проверка числа
+        function twoNum(m, n) {
+            m = Number(m);
+            n = Number(n);
+            if (m < n) {
+                return -1 + `, второе число больше чем первое`;
+            } else if (m > n) {
+                return 1 + `, первое число больше чем второе`;
+            } else {
+                return 0 + `, числа равны`;
+            }
         }
+
+    //ЗАДАЧА 17 – Создать число
+        function addNum(k, l, p) {
+            return k * 100 + l * 10 + p;
+        }
+
+    //ЗАДАЧА 18 – Площадь квадрата или прямоугольника
+        function squre(w, h) {
+            alert(`Решение задачи #18:\n\nПлощадь фигуры = ${w * h}`)
+        }
+
+    //ЗАДАЧА 19 – Часы
+        function oClock(myHours, myMinutes, mySeconds) {
+            myHours = myHours.toString().padStart(2, '0');
+            myMinutes = myMinutes.toString().padStart(2, '0');
+            mySeconds = mySeconds.toString().padStart(2, '0');
+            alert(`Решение задачи #19:\n\nУказанное время: ${myHours}:${myMinutes}:${mySeconds}`);
+        }
+
+    // ЗАДАЧА 20 – Переводим в секунды
+    function clocoSec(yourHours, yourMinutes, yourSeconds) {
+        yourSec = yourSeconds + yourMinutes * 60 + yourHours * 3600;
+        alert(`Решение задачи #20:\n\nУказанное время в секундах: ${yourSec} сек`);
     }
-})
 
-//Задача 21 - Переделать if
-btn_check21.addEventListener('click',() => {
-    window.open('./js/script.js', '_blank');
-    let result21;
-    a + b < 4 ? result21 = 'Мало' : result21 = 'Много';
-    console.log(result21);
-})
-
-//Задача 22 - Переделать if….else
-btn_check22.addEventListener('click',() => {
-    const login22 = prompt('введите логин',''); 
-    let message;
-    login22 == 'Сотрудник' ? message = 'Привет' 
-        : login22 == 'Директор' ? message = 'Здравствуйте'
-        : login22 == '' ? message = 'Нет логина'
-        : message = ''
-    alert(message);
-    window.open('./js/script.js', '_blank');
-})
-
-//Задача 23 - Сравнение переменных
-btn_check23.addEventListener('click',() => {
-    let myVariable1 = 10;
-    let myVariable2 = '5';
-    +myVariable1 <= +myVariable2 ? console.log('true') : console.log('false');
-    myVariable1 = '20';
-    myVariable2 = 100;
-    +myVariable1 <= +myVariable2 ? console.log('true') : console.log('false');
-})
-
-
-//Дополнительные задачи
-//Задача 1
-btn_checkTask1.addEventListener('click',() => {
-    let rub, rubSale;
-    do {
-        rub = +prompt('Введите цену товара в рублях', 'Например, 25.99 рублей')
-    } while (rub <= 0)
-    do {
-        rubSale = +prompt('Введите размер скидки', 'Например, 20%')
-    } while (rubSale <= 0)
-    alert(`Цена товара, руб: ${rub}
-Скидка, %: ${rubSale}
-Итого скидка, руб.: ${rub*rubSale/100}`)
-})
-
-//Задача 2
-btn_checkTask2.addEventListener('click',() => {
-    let yourNum = prompt('Введите любое число', 'Например, 13.456'), wholePart, fractPart,
-        dot = yourNum.indexOf(',');
-        yourNum = yourNum.replace(yourNum[dot], '.');
-        dot = yourNum.indexOf('.');
-        if (dot === -1) {
-            wholePart = yourNum;
-            fractPart = 0;
-        } else {
-        wholePart = yourNum.slice(0, dot);
-        fractPart = yourNum.slice(dot);
-        fractPart = 0 + fractPart;
-        fractPart = +fractPart.toFixed(4);
+    // ЗАДАЧА 21 – Переводим секунды в ЧАСЫ МИНУТЫ
+        function secoClock(mySec) {
+            let myHour = Math.floor(mySec / 3600),
+                myMin = Math.floor((mySec % 3600) / 60);
+            mySec = mySec % 60;
+            myHour = myHour.toString().padStart(2, '0');
+            myMin = myMin.toString().padStart(2, '0');
+            mySec = mySec.toString().padStart(2, '0');
+            alert(`Решение задачи #21:\n\nУказанное время: ${myHour}:${myMin}:${mySec}`);
         }
-        alert(`Введено число: ${yourNum}
-Целая часть: ${wholePart}
-Дробная часть: ${fractPart}`)
-})
-
-//Задача 3
-btn_checkTask3.addEventListener('click',() => {
-    let yourText = prompt('Введите любой текст', ''),
-        rand = Math.floor(Math.random() * (5 - 1 + 1)) + 1,
-        long = yourText.length;      
-        yourText = yourText.padStart(rand + long, '*');
-        long = yourText.length;
-        yourText = yourText.padEnd(rand + long, '*');
-    alert(yourText);
-})
-
-//Задача 4
-btn_checkTask4.addEventListener('click',() => {
-    let userNum1 = prompt('Введите любое целое число', 'Например, 8'),
-        userNum2 = prompt('Введите ещё одно любое целое число', 'Например, 16');
-        if (userNum1 === userNum2) {
-            userNum1 = prompt('Числа равны, введите любое целое число', 'Например, 8')
-            userNum2 = prompt('Введите ещё одно любое целое число', 'Например, 16')
-        } else if (userNum1 < userNum2) {
-            min = Math.round(userNum1)
-            max = Math.round(userNum2)
-        } else {
-            min = Math.round(userNum2)
-            max = Math.round(userNum1)
+    
+    //ЗАДАЧА 22 – Разница времени
+        function devoClock(userHour1, userMin1, userSec1, userHour2, userMin2, userSec2) {
+            let userSec1Total = userSec1 + userMin1 * 60 + userHour1 * 3600,
+                userSec2Total = userSec2 + userMin2 * 60 + userHour2 * 3600,
+                devSec = Math.abs(userSec1Total - userSec2Total);
+            let devHour = Math.floor(devSec / 3600),
+                devMin = Math.floor((devSec % 3600) / 60);
+            devSec = devSec % 60;
+            hourResult = devHour.toString().padStart(2, '0');
+            minResult = devMin.toString().padStart(2, '0');
+            secResult = devSec.toString().padStart(2, '0');
+            alert(`Решение задачи #22:\n\nРазница в указанном времени: ${hourResult} час(а/ов) ${minResult} минут(а/ы) ${secResult} секунд(а/ы)`);
         }
-    let userRand1 = Math.floor(Math.random() * (max - min + 1)) + min,
-        userRand2 = Math.floor(Math.random() * (max - min + 1)) + min,
-        userRand3 = Math.floor(Math.random() * (max - min + 1)) + min;
-    alert(`Диапазон от ${Math.round(userNum1)} до ${Math.round(userNum2)}
-Случайное число №1: ${userRand1}
-Случайное число №2: ${userRand2}
-Случайное число №3: ${userRand3}`);
-})
 
-//Задача 5
-btn_checkTask5.addEventListener('click',() => {
-    let userSeconds, userMinutes, userHours;
-    do {
-        userSeconds = prompt('Введите количество секунд', 'Например, 120')
-    } while (userSeconds <= 0);
-        userMinutes = userSeconds/60;
-        userHours = userMinutes/60;
-    alert(`Введено секунд: ${userSeconds}
-это целых ${Math.floor(userMinutes)} минут
-и целых ${Math.floor(userHours)} часов`);
-})
+    //ЗАДАЧА 23 – Меньшее из чисел
+        let minNum = (q, s) => q < s ? q : s < q ? s : 'Введеные числа равны'
 
-//Задача 6
-btn_checkTask6.addEventListener('click',() => {
-    let mySeconds, myMinutes, myHours;
-    do {
-        mySeconds = prompt('Введите количество секунд', 'Например, 120')
-    } while (mySeconds <= 0);
-    myHours = Math.floor(mySeconds / 3600);
-    myMinutes = Math.floor((mySeconds % 3600) / 60);
-    mySeconds = mySeconds % 60;
-    myHours = myHours.toString().padStart(2, '0');
-    myMinutes = myMinutes.toString().padStart(2, '0');
-    mySeconds = mySeconds.toString().padStart(2, '0');
-    alert(`Указанное время: ${myHours}:${myMinutes}:${mySeconds}`);
+    //ЗАДАЧА 24 – Число в степень
+        let degree = (u, r) => u ** r 
+
+    //ЗАДАЧА 25 – Калькулятор
+        function calculate(oneDigit, twoDigit, digitAction) {
+            if (digitAction === '+') {
+                alert(`Решение задачи #25:\n\n${oneDigit} + ${twoDigit} = ${calculate = +oneDigit + +twoDigit}`)
+            } else if (digitAction === '-') {
+                alert(`Решение задачи #25:\n\n${oneDigit} - ${twoDigit} = ${calculate = +oneDigit - +twoDigit}`)
+            } else if (digitAction === '*') {
+                alert(`Решение задачи #25:\n\n${oneDigit} * ${twoDigit} = ${calculate = +oneDigit * +twoDigit}`)
+            } else if (digitAction === '/') {
+                alert(`Решение задачи #25:\n\n${oneDigit} / ${twoDigit} = ${calculate = +oneDigit / +twoDigit}`)
+            }
+        }
+
+    //ЗАДАЧА 26 – Таблица умножения
+        function multiTable(numeral) {
+            let cell = '';
+            for (let i = 2; i < 10; i++) {
+                cell = cell + `${numeral} * ${i} = ${numeral * i}\n`;
+            }
+            alert(`Решение задачи #25:\n\nТаблица умножения для числа ${numeral}:\n${cell}`)
+        }
+
+    //ЗАДАЧА 27 – Пароль
+        let checkPassword = p => p === 'Step' || p === 'Web' || p === 'JavaScript' ? true : false
+
+    //ЗАДАЧА 28 – День недели
+        function dayWeek(ordinal) {
+            let week = {
+                0: 'Sunday',
+                1: 'Monday',
+                2: 'Tuesday',
+                3: 'Wednesday',
+                4: 'Thursday',
+                5: 'Friday',
+                6: 'Saturday'
+            }
+            alert(`Решение задачи #28:\n\nДень недели: ${week[ordinal]}`)
+        }
+
+    //ЗАДАЧА 29 – Умножаем все числовые свойства на 2
+        function multiplyNumeric(obj) {
+            for (let key in obj) {
+                if (typeof obj[key] === 'number') {
+                    obj[key] *= 2;
+                }
+            }
+        }
+        
+
+    //Мои инициативы
+        task = +task;
+        switch (task) {
+            case 1: 
+                myName();
+                myQuestion();
+            case 2:
+                nName = prompt('Как Вас зовут?');
+                alert(`Решение Задачи #2:\n\n${yourName(nName)}`);
+                myQuestion();
+            case 3:
+                alert(`Решение задачи #3:\n\n${helloWorldObviously()}`);
+                myQuestion();
+            case 4:
+                x = prompt('Введите любой набор символов');
+                y = prompt('И ещё раз');
+                diffNum(x, y);
+                myQuestion();
+            case 5:
+                alert('Решение задачи #5:\n\nРезультат в консоле');
+                myQuestion();
+            case 6:
+                city = prompt('Введите Ваш город', 'Например, Тула');
+                let weatherQuestion = prompt('Хотите указать погоду?', 'Y/N');
+                if (weatherQuestion === 'Y') {
+                    weather = prompt('Какая у Вас погода?', ''); 
+                } else {
+                }
+                weatherForecast(city, weather);
+                myQuestion();
+            case 7:
+                alert('Решение Задачи #7:\n\nОтвет по задаче в файле script.js, так как мы ещё не проходили как передать в функцию массив чисел');
+                window.open('./js/script.js', '_blank');
+                myQuestion();
+            case 8:
+                alert('Решение Задачи #8:\n\nОтвет по задаче в файле script.js, так как мы ещё не проходили как передать в функцию массив чисел. Добавлено условие для проверки длины строки аргумента');
+                window.open('./js/script.js', '_blank');
+                myQuestion();
+            case 9:
+                num = prompt('Введите любое числов', 'Например, 9');
+                templateLiteral(num);
+                myQuestion();
+            case 10:
+                alert('Ответ на задачу #10:\n\nВ консоле будет выведено "undefined", так как переменная "a" нигде не объявлена, потом 2, потому что константа "b" является глобальной, поэтому будет выведена во второй функции, так как внутри функции не была объявлена, а внутри первой функции является локальной переменной, потом 5, потому что внутри второй функции объявлена локальная переменная "с" и ей присвоено значение и наконец 15, так как внутри второй функции переменной "d" не присвоено, берется глобальная, а в первой функции переменная "d" является локальной.')
+                myQuestion();
+            case 11:
+                alert('Решение Задачи #11:\n\nРезультат в файле script.js');
+                window.open('./js/script.js', '_blank');
+                myQuestion();
+            case 12:
+                alert('Решение Задачи #12:\n\nРезультат в файле script.js');
+                window.open('./js/script.js', '_blank');
+                myQuestion();
+            case 13:
+                alert('Решение Задачи #13:\n\nРезультат в файле script.js. Ответ на вопрос: использовать "ИЛИ" нельзя потому что при значении 0 будет ложь и сразу произойдет замена значения на 2, но нам требуется вхождение значения 0');
+                window.open('./js/script.js', '_blank');
+                myQuestion();
+            case 14:
+                alert(`Решение Задачи #14:\n\n${carsInfo(cars)}`);
+                myQuestion();
+            case 15:
+                alert(`Решение Задачи #15:\n\n${sumObjectValues(objectWithNumbers)}`);
+                myQuestion();
+            case 16:
+                m = prompt('Введите любое число', 'Например, 4');
+                n = prompt('Введите любое число', 'Например, 21');
+                alert(`Решение Задачи #16:\n\n${twoNum(m, n)}`);
+                myQuestion();
+            case 17:
+                do {
+                    let klp, klpDot;
+                    do {
+                        klpDot = 0;
+                        klp = prompt('Введите 3 любые цифры через запятую', 'Например, 3,9,5');
+                        for (let i in klp) {
+                            if (klp[i] === ',') {
+                                klpDot++
+                            }
+                        }
+                    } while (klpDot !== 2 && klp.length !== 5);
+                    const klpNum = {
+                        1: 0,
+                        2: 0,
+                        3: 0
+                    }
+                    klpDot= '';
+                    for (let i in klpNum) { 
+                        klpDot = klp.indexOf(',')
+                        if (klpDot !== -1) {
+                            klpNum[i] = klp.slice(0, klpDot)
+                            klp = klp.slice(klpDot + 1)
+                            klp = klp.trim()
+                        } else {
+                            klpNum[i] = klp
+                        }
+                    }
+                    k = +klpNum[1];
+                    l = +klpNum[2];
+                    p = +klpNum[3];
+                } while (k < 0 || l < 0 || p < 0)
+                alert(`Решение Задачи #17:\n\n${addNum(k, l, p)}`);
+                myQuestion();
+            case 18:
+                w = prompt('Укажите длину стороны прямоугольной фигуры', '');
+                let sideQuestion = prompt('Если Ваша фигура квадрат, просто нажмите продолжить\nЕсли Вы хотите ввести вторую сторону введите Y', '');
+                if (sideQuestion === 'Y') {
+                    h = prompt('Введите длину второй стороны', ''); 
+                } else {
+                    h = w;
+                }
+                squre(w, h);
+                myQuestion();
+            case 19:
+                do {
+                    myHours = prompt('Введите количество часов', 'Например, 2')
+                    myMinutes = prompt('Введите количество минут', 'Например, 25')
+                    mySeconds = prompt('Введите количество секунд', 'Например, 40')
+                } while ((myHours < 0 || myHours >= 24 || isNaN(myHours)) || (myMinutes < 0 || myMinutes >= 60 || isNaN(myMinutes)) || (mySeconds < 0 || mySeconds >= 60 || isNaN(mySeconds)));
+                oClock(myHours, myMinutes, mySeconds);
+                myQuestion();
+            case 20:
+                do {
+                    let yourClock;
+                    let colonDot = 0;
+                    do {
+                        yourClock = prompt('Введите время в формате чч:мм:cc', 'Например, 12:45:05');
+                        for (let i in yourClock) {
+                            if (yourClock[i] === ':') {
+                                colonDot++
+                            }
+                        }
+                    } while (colonDot !== 2 && yourClock.length !== 8);
+                    let yourClockArr = yourClock.split(':');
+                    yourHours = +yourClockArr[0];
+                    yourMinutes = +yourClockArr[1];
+                    yourSeconds = +yourClockArr[2];
+                } while ((yourHours < 0 || yourHours >= 24 || isNaN(yourHours)) || (yourMinutes < 0 || yourMinutes >= 60 || isNaN(yourMinutes)) || (yourSeconds < 0 || yourSeconds >= 60 || isNaN(yourSeconds)));
+                clocoSec(yourHours, yourMinutes, yourSeconds);
+                myQuestion();
+            case 21:
+                do {
+                    mySec = prompt('Введите количество секунд', 'Например, 120')
+                } while (mySec <= 0);
+                secoClock(mySec);
+                myQuestion();
+            case 22:
+                do {
+                    let userClock1, userClock2;
+                    let devColon = 0;
+                    do {
+                        userClock1 = prompt('Введите первое время в формате чч:мм:cc', 'Например, 12:45:05');
+                        userClock2 = prompt('Введите второе время в формате чч:мм:cc', 'Например, 12:45:05');
+                        for (let i in userClock1) {
+                            if (userClock1[i] === ':') {
+                                devColon++
+                            }
+                        }
+                        for (let i in userClock2) {
+                            if (userClock2[i] === ':') {
+                                devColon++
+                            }
+                        }
+                    } while (devColon !== 8 && userClock1.length !== 8 && userClock2.length !== 8);
+                    let userClockArr = userClock1.split(':');
+                    userHour1 = +userClockArr[0];
+                    userMin1 = +userClockArr[1];
+                    userSec1 = +userClockArr[2];
+                    userClockArr = userClock2.split(':');
+                    userHour2 = +userClockArr[0];
+                    userMin2 = +userClockArr[1];
+                    userSec2 = +userClockArr[2];
+                } while ((userHour1 < 0 || userHour1 >= 24 || isNaN(userHour1)) || (userMin1 < 0 || userMin1 >= 60 || isNaN(userMin1)) || (userSec1 < 0 || userSec1 >= 60 || isNaN(userSec1)) || (userHour2 < 0 || userHour2 >= 24 || isNaN(userHour2)) || (userMin2 < 0 || userMin2 >= 60 || isNaN(userMin2)) || (userSec2 < 0 || userSec2 >= 60 || isNaN(userSec2)));
+                devoClock(userHour1, userMin1, userSec1, userHour2, userMin2, userSec2)
+                myQuestion();
+            case 23:
+                do {
+                    q = prompt('Введите первое любое число', 'Например, 6');
+                    s = prompt('Введите второе любое число', 'Например, 3');
+                } while (isNaN(q) && isNaN(s));
+                alert(`Решение задачи #23:\n\n${minNum(q, s)}`)
+                myQuestion();
+            case 24:
+                do {
+                    u = prompt('Введите первое любое число', 'Например, 6');
+                    r = prompt('Введите второе любое число', 'Например, 3');
+                } while (isNaN(u) && isNaN(r));
+                alert(`Решение задачи #24:\n\nЧисло ${u} в степени ${r} равно ${degree(u, r)}`)
+                myQuestion();
+            case 25:
+                do {
+                    oneDigit = prompt('Введите первое любое число', 'Например, 6')
+                    twoDigit = prompt('Введите первое любое число', 'Например, 3')
+                    digitAction = prompt('Введите действие, которое необходимо сделать с числами', '* / + -')
+                } while (isNaN(oneDigit) && isNaN(twoDigit) && (digitAction !== '*' || digitAction !== '/' || digitAction !== '+' || digitAction !== '-'));
+                calculate(oneDigit, twoDigit, digitAction);
+                myQuestion();
+            case 26:
+                do {
+                    numeral = prompt('Введите любое число', 'Например, 7')
+                } while (isNaN(numeral));
+                multiTable(numeral);
+                myQuestion();
+            case 27:
+                do {
+                    p = prompt('Введите пароль', '')
+                } while (!isNaN(p));
+                alert(`Решение задачи #27:\n\n${checkPassword(p)}`);
+                myQuestion();
+            case 28:
+                do {
+                    ordinal = prompt('Введите любое число от 0 до 6', '')
+                } while (isNaN(ordinal) || ordinal < 0 || ordinal > 6);
+                dayWeek(ordinal);
+                myQuestion();
+            case 29:
+                let menu = {
+                    width: 200,
+                    height: 300,
+                    title: "My menu"
+                  };
+                alert(`Решение задачи #27:\n\nДо вызова функции:\n${JSON.stringify(menu)}`);
+                multiplyNumeric(menu);
+                alert(`Решение задачи #27:\n\nПосле вызова функции:\n${JSON.stringify(menu)}`);
+    } 
+    } else {
+    }
 })
